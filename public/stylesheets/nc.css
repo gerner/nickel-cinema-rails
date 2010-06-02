@@ -2,6 +2,8 @@ body {
 	font-size: 16px;
 	padding:0px;
 	background-color: #6C6;
+	background-image:url('/images/bg.png');
+	background-repeat:repeat;
 }
 
 #wrapper {
