@@ -1,0 +1,13 @@
+<% content_for :head do %>
+  <title>Users: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+<% end %>
+
+<% content_for :content do %>
+
+<%= yield %>
+<% end %>
+
+<%= render :file => 'layouts/application' %>
+
+

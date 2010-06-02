@@ -1,0 +1,21 @@
+<h2>Showtimes in your Area</h2>
+
+
+<% @movies.each do |movie| %>
+
+<div class="movietimes">
+<h3 class="moviename"><%= link_to movie[:movie].title, movie[:movie].info_url, :popup => true %></h3>
+
+<div class="showtimes">
+<% movie[:theaters].each do |theater| %>
+
+<div class="theatertimes"><strong class="theatername"><%= link_to theater[:theater].name, theater[:theater].map_url, :popup => true %></strong>
+<% theater[:showtimes].each do |showtime| %>
+<span class="showtime"><%= link_to showtime.showtime.strftime('%l:%M%P'), :controller => :home, :action => :attend, :id => showtime.id %></span>
+<% end %>
+</div>
+
+<% end %>
+</div>
+</div>
+<% end %>

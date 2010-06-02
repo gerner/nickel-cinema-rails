@@ -1,0 +1,7 @@
+<h3><%= link_to movie.title, movie.info_url, :popup => true %></h3>
+Stars: <%= "#{movie.rating.inspect}" %> (<%= "#{movie.average_rating.inspect}"%>)<br />
+
+<% movie.theaters.each do |theater| %>
+
+<strong><%= link_to theater.name, theater.map_url, :popup => true %></strong> <%= theater.showtimes.inspect %> <br />
+<% end %>

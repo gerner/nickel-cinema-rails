@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @theater.name %>
+</p>
+
+<p>
+  <b>Zipcode:</b>
+  <%=h @theater.zipcode %>
+</p>
+
+<p>
+  <b>Phone number:</b>
+  <%=h @theater.phone_number %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @theater.address %>
+</p>
+
+
+<%= link_to 'Edit', edit_theater_path(@theater) %> |
+<%= link_to 'Back', theaters_path %>

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+<%= stylesheet_link_tag 'aal' %>
+<%= stylesheet_link_tag 'nc' %>
+<%= stylesheet_link_tag 'tabs' %>
+
+<title>Nickel Cinema: Find New Movies You'll Love and Buy Tickets</title> 
+</head>
+<body>
+<div id="wrapper">
+
+<div id="login"><%= render :partial => "shared/login_bar" %></div>
+
+<%= link_to '<div id="logo" title="Nickel Cinema"><h1>Nickel Cinema</h1></div>', root_url %>
+
+<%= HomeController.to_s %>
+<div id="nav">
+	<div id="header">
+        <ul id="primary">
+                <li><a href="index.html">Showtimes</a></li>
+                <li><span>Me</span>
+                        <ul id="secondary">
+                                <li><a href="philosophy.html">Movie History</a></li>
+                                <li><a href="employment.html">Points and Badges</a></li>
+                        </ul>
+                </li>
+                <li><a href="portfolio.html">Friends</a></li>
+		</ul>
+	</div>
+	<div id="subnav">&nbsp;</div>
+</div>
+
+<% if flash[:error] %>
+<div id="errorflash"><%= flash[:error] %></div>
+<% end %>
+
+<% if flash[:notice] %>
+<div id="noticeflash"><%= flash[:notice] %></div>
+<% end %>
+
+<div id="contents">
+
+<%= yield(:content) or yield %>
+</div>
+
+<div id="footer">
+<%= render :partial => "shared/footer" %>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  movie: 
+  theater: 
+  showtime: 2010-06-01 09:45:04
+
+two:
+  movie: 
+  theater: 
+  showtime: 2010-06-01 09:45:04
