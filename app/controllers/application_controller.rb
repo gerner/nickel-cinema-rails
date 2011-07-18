@@ -3,6 +3,7 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
+  helper_method :current_user, :admin?
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   geocode_ip_address
   before_filter :get_zipcode
@@ -11,6 +12,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   private
+  
   def current_user
     @_current_user ||= session[:current_user_id] &&
       User.find(session[:current_user_id])
@@ -44,11 +46,15 @@ class ApplicationController < ActionController::Base
       session[:zipcode] = params[:zipcode].to_i
     end
     unless session[:zipcode]
-      location = GeoKit::Geocoders::GoogleGeocoder.geocode("#{session[:geo_location].lat}, #{session[:geo_location].lng}")
-      
-      session[:zipcode] = location.zip || 98116
-      logger.info "location: #{session[:geo_location].inspect}"
-      logger.info "zip: #{location.zip}"
+      if session[:geo_location]
+        location = GeoKit::Geocoders::GoogleGeocoder.geocode("#{session[:geo_location].lat}, #{session[:geo_location].lng}")
+        
+        session[:zipcode] = location.zip || 98116
+        logger.info "location: #{session[:geo_location].inspect}"
+        logger.info "zip: #{location.zip}"
+      else
+        session[:zipcode] = 98116
+      end
     end
   end
   

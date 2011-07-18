@@ -2,12 +2,12 @@
 <% if session[:current_user_id] %>
 Welcome back <%= link_to session[:current_user_name], user_path(session[:current_user_id]) %>! | <%= link_to 'Logout', :controller => :login, :action => :destroy %>
 <% else %>
-<% form_tag :controller => "login", :action => "create" do %>
+<% form_tag({:controller => "login", :action => "create"}, :id => "login_form") do %>
     <%= label_tag :email %>
-    <%= text_field_tag :email %>
+    <%= text_field_tag :email, '', :size => 8 %>
 
     <%= label_tag :password %>
-    <%= password_field_tag :password %>
+    <%= password_field_tag(:password, '', :size => 8) %>
 
     <%= submit_tag 'Login' %>
 <% end %> | <%= link_to 'Signup', :controller => :users, :action => :new %>

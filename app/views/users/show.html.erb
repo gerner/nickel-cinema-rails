@@ -12,6 +12,17 @@
   <b>Password:</b>
   <%=h @user.password %>
 </p>
+  <b>Zipcode:</b>
+  <%=h session[:zipcode] %>
+<p>
+
+</p>
+
+<% if admin? %>
+<p>
+  <b>Is Admin?:</b>
+  <%=h admin? %>
+</p>
 
 <p>
   <b>Netflix Token:</b>
@@ -22,6 +33,7 @@
   <b>Netflix Secret:</b>
   <%=h @user.netflix_token_secret %>
 </p>
+<% end %>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
